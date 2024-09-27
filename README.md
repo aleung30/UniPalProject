@@ -6,9 +6,13 @@ Do you often feel overwhelmed by the stress and challenges of university, yet st
 
 As a second-year university student, I have noticed that many of my peers, including myself, have struggled with adjusting to post-secondary. Thus, the main users of this application will be **university students**, who want to track and reflect on their mental well-being over the course of the semesters. By providing a tool to help fellow students navigate this transition, we can promote open conversations about mental health and help reduce the stigma surrounding it. 
 
-A **bulleted** list:
-- item 1
-- item 2
-- item 3
+**User Stories**
+- As a user, I want to be able to log my mood after specific university activities such as lectures and exams
+- As a user, I want to be able to categorize my mood entries based on type
+- As a user, I want to be able to add an accomplishment to my Accomplishment Archive
+- As a user, I want to be able to view a list of my accomplishments
+- As a user, I want to be able to login and register an account in which my UniPal is saved
+- As a user, I want to receive tailored recommendations for relaxation methods based on my mood
+- As a user, I want to receive mood-related tips or motivational quotes after logging my mood 
 
 An example of text with **bold** and *italic* fonts.  
