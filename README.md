@@ -15,4 +15,4 @@ As a second-year university student, I have noticed that many of my peers, inclu
 - As a user, I want to receive tailored recommendations for relaxation methods based on my mood
 - As a user, I want to receive mood-related tips or motivational quotes after logging my mood 
 
-An example of text with **bold** and *italic* fonts.  
+  
