@@ -75,10 +75,20 @@ public class MoodCollection {
 
     /*
      * REQUIRES: Mood object has a valid type
-     * EFFECTS: returns the number of Mood objects in the moods list
+     * EFFECTS: returns a recommendation based on mood type name
      */
     public String getRecommendation(Mood mood) {
-        return null;
+        String moodType = mood.getType();
+        if ("POSITIVE".equals(moodType)) {
+            return "That is great to hear!"
+                    + " Keep up the positive vibes with meditation, a light walk, or listening to upbeat songs!";
+        } else if ("NEUTRAL".equals(moodType)) {
+            return "Feeling neutral is a great way to reflect on yourself!"
+                    + " You can engage in gentle stretching, read a book and journal, or watch a relaxing movie!";
+        } else {
+            return "It sounds like you are experiencing some overwhelming emotions!"
+                    + " How about some deep breathing exercises or spending time with friends and family?";
+        }
     }
 
     /*
