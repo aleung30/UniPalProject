@@ -28,17 +28,17 @@ public class AccomplishmentCollection {
     }
 
     /*
-     * EFFECTS: returns true if name mathces the name of an accomplishment in the
-     * collection
+     * REQUIRES: AccomplishmentCollection is not an empty list
+     * EFFECTS: returns true if name matches the name of an accomplishment in the
+     *          collection and returns false if it does not match
      */
     public boolean containsAccomplishment(String name) {
         return true;
     }
 
     /*
-     * REQUIRES: AccomplishmentCollection is not an empty list
      * EFFECTS: returns the number of Accomplishment objects in the
-     * AccomplishmentCollection
+     *          AccomplishmentCollection
      */
     public int accomplishmentSize() {
         return 0;
