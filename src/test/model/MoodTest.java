@@ -10,14 +10,14 @@ public class MoodTest {
     
     @BeforeEach
     void runBefore() {
-        testMood = new Mood("Happy", "Positive", "Oct 6, 2024");
+        testMood = new Mood("Happy", "POSITIVE", "Oct 10, 2024");
     }
 
     @Test
     void testConstructor() {
         assertEquals("Happy", testMood.getName());
-        assertEquals("Positive", testMood.getType());
-        assertEquals("Oct 6, 2024", testMood.getDate());
+        assertEquals("POSITIVE", testMood.getType());
+        assertEquals("Oct 10, 2024", testMood.getDate());
     }
 
     @Test
