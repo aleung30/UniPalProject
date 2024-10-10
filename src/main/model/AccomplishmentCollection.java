@@ -1,14 +1,18 @@
 package model;
 
+import java.util.List;
+import java.util.ArrayList;
+
 // Represents a collection of Accomplishment objects
 public class AccomplishmentCollection {
+    private List<Accomplishment> accomplishmentCollection;
 
     /*
      * EFFECTS: constructs an empty list that stores Accomplishment objects
      */
 
     public AccomplishmentCollection() {
-
+        this.accomplishmentCollection = new ArrayList<>();
     }
 
     /*
@@ -16,7 +20,7 @@ public class AccomplishmentCollection {
      * EFFECTS: adds an accomplishment to the AccomplishmentCollection
      */
     public void addAccomplishment(Accomplishment accomplishment) {
-
+        this.accomplishmentCollection.add(accomplishment);
     }
 
     /*
@@ -24,16 +28,21 @@ public class AccomplishmentCollection {
      * EFFECTS: removes an accomplishment from the AccomplishmentCollection
      */
     public void removeAccomplishment(Accomplishment accomplishment) {
-
+        this.accomplishmentCollection.remove(accomplishment);
     }
 
     /*
      * REQUIRES: AccomplishmentCollection is not an empty list
      * EFFECTS: returns true if name matches the name of an accomplishment in the
-     *          collection and returns false if it does not match
+     *          collection and returns false if none match
      */
-    public boolean containsAccomplishment(String name) {
-        return true;
+    public boolean containsAccomplishment(String name, String date) {
+        for (Accomplishment accomplishment : accomplishmentCollection) {
+            if (accomplishment.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
@@ -41,7 +50,6 @@ public class AccomplishmentCollection {
      *          AccomplishmentCollection
      */
     public int accomplishmentSize() {
-        return 0;
+        return this.accomplishmentCollection.size();
     }
-
 }
