@@ -15,22 +15,20 @@ public class Accomplishment {
 
     /*
      * REQUIRES: name input has a non-zero length
-     * MODIFIES: this
      * EFFECTS: changes name of the accomplishment 
      * 
      */
     public void changeName(String name) {
-
+        
     }
 
     /*
      * REQUIRES: date input has a non-zero length
-     * MODIFIES: this
      * EFFECTS: changes date of the accomplishment 
      * 
      */
-    public String changeDate(String date) {
-        return null;
+    public void changeDate(String date) {
+        
     }
 
     public String getName() {
