@@ -31,9 +31,9 @@ public class MoodCollection {
     }
 
     /*
-     * EFFECTS: returns true if name matches the name of a mood in the collection
+     * EFFECTS: returns true if name matches the name, type, and date of a mood in the collection
      */
-    public boolean containsMood(String name) {
+    public boolean containsMood(String name, String type, String date) {
         return true;
     }
 
@@ -42,7 +42,7 @@ public class MoodCollection {
      * EFFECTS: returns all the moods in the list that match the type name
      */
 
-    public MoodCollection getMoodsByTypeName() {
+    public MoodCollection sortMoodsByTypeName(String type) {
         return null;
     }
 
