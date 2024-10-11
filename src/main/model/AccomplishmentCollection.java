@@ -1,11 +1,11 @@
 package model;
 
-import java.util.List;
 import java.util.ArrayList;
 
 // Represents a collection of Accomplishment objects
 public class AccomplishmentCollection {
-    private List<Accomplishment> accomplishmentCollection;
+
+    private ArrayList<Accomplishment> accomplishmentCollection;
 
     /*
      * EFFECTS: constructs an empty list that stores Accomplishment objects
@@ -34,7 +34,7 @@ public class AccomplishmentCollection {
     /*
      * REQUIRES: AccomplishmentCollection is not an empty list
      * EFFECTS: returns true if name matches the name of an accomplishment in the
-     *          collection and returns false if none match
+     *          collection; returns false if none match
      */
     public boolean containsAccomplishment(String name, String date) {
         for (Accomplishment accomplishment : accomplishmentCollection) {
@@ -51,5 +51,12 @@ public class AccomplishmentCollection {
      */
     public int accomplishmentSize() {
         return this.accomplishmentCollection.size();
+    }
+
+    /*
+     * EFFECTS: returns the AccomplishmentCollection
+     */
+    public ArrayList<Accomplishment> getAccomplishmentCollection() {
+        return null;
     }
 }
