@@ -17,7 +17,8 @@ public class Accomplishment {
 
     /*
      * REQUIRES: name input has a non-zero length
-     * EFFECTS: changes name of the accomplishment 
+     * MODFIIES: this
+     * EFFECTS: changes name of the accomplishment
      */
     public void changeName(String name) {
         this.name = name;
@@ -25,7 +26,8 @@ public class Accomplishment {
 
     /*
      * REQUIRES: date input has a non-zero length
-     * EFFECTS: changes date of the accomplishment 
+     * MODIFIES: this
+     * EFFECTS: changes date of the accomplishment
      */
     public void changeDate(String date) {
         this.date = date;
