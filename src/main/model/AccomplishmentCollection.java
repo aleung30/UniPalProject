@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 // Represents a collection of Accomplishment objects
 public class AccomplishmentCollection {
-
     private ArrayList<Accomplishment> accomplishmentCollection;
 
     /*
@@ -57,6 +56,6 @@ public class AccomplishmentCollection {
      * EFFECTS: returns the AccomplishmentCollection
      */
     public ArrayList<Accomplishment> getAccomplishmentCollection() {
-        return null;
+        return accomplishmentCollection;
     }
 }
