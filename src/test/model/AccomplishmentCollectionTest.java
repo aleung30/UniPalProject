@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +22,7 @@ public class AccomplishmentCollectionTest {
     @Test
     void testConstructor() {
         assertEquals(0, testAccomplishmentList.accomplishmentSize());
+        assertEquals(0, testAccomplishmentList.getAccomplishmentCollection().size());
     }
 
     @Test
@@ -49,14 +51,17 @@ public class AccomplishmentCollectionTest {
         testAccomplishmentList.addAccomplishment(testAccomplishment2);
         testAccomplishmentList.removeAccomplishment(testAccomplishment1);
         assertEquals(1, testAccomplishmentList.accomplishmentSize());
-        testAccomplishmentList.removeAccomplishment(testAccomplishment1);
+        testAccomplishmentList.removeAccomplishment(testAccomplishment2);
         assertEquals(0, testAccomplishmentList.accomplishmentSize());
     }
 
     @Test
     void testContainsAccomplishment() {
+        testAccomplishmentList.containsAccomplishment("Scored 100 on MATH 101 midterm", "Oct 6, 2024");
+        assertEquals("Scored 100 on MATH 101 midterm", testAccomplishment1.getName());
         testAccomplishmentList.addAccomplishment(testAccomplishment1);
-        assertTrue(testAccomplishmentList.containsAccomplishment("Scored 100 on MATH 101 midterm"));
+        assertFalse(testAccomplishmentList.containsAccomplishment("Scored 100 on CPSC 121 midterm", "Oct 6, 2024"));
+        assertTrue(testAccomplishmentList.containsAccomplishment("Scored 100 on MATH 101 midterm", "Oct 6, 2024"));
     }
 
 }
