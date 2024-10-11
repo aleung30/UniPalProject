@@ -9,7 +9,7 @@ As a second-year university student, I have noticed that many of my peers, inclu
 **User Stories**
 - As a user, I want to be able to add a mood to the Mood Collection
 - As a user, I want to be able to view all of my moods in the Mood Collection
-- As a user, I want to be able to categorize my mood entries based on type
+- As a user, I want to be able to check if one of my mood names is already within the Mood Collection
 - As a user, I want to receive recommendations for relaxation methods based on my mood
 - As a user, I want to be able to add an accomplishment to the Accomplishment Archive
 - As a user, I want to be able to view all of my accomplishments in the Accomplishment Archive
