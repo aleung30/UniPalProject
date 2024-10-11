@@ -30,7 +30,7 @@ public class MoodCollection {
     }
 
     /*
-     * EFFECTS: returns true if name matches the name of a mood in the collection
+     * EFFECTS: returns true if name matches the name of a mood in the collection;
      *          return false if name does not match any
      */
     public boolean containsMoodName(String name) {
@@ -45,7 +45,7 @@ public class MoodCollection {
     /*
      * REQUIRES: Mood oject has a valid type
      * EFFECTS: returns true if type name matches the type name of a mood in the
-     *          collection
+     *          collection;
      *          return false if name does not match any
      */
     public boolean containsMoodType(String type) {
@@ -88,9 +88,9 @@ public class MoodCollection {
         } else {
             return "It sounds like you are experiencing some overwhelming emotions!"
                     + " How about some deep breathing exercises or spending time with friends and family?";
+        }
     }
-}
-    
+
     /*
      * REQUIRES: getMoods has at least one item in the list
      * EFFECTS: returns the number of Mood objects in the moods list
@@ -99,8 +99,8 @@ public class MoodCollection {
         return moodCollection.size();
     }
 
-     /*
-     * EFFECTS: returns the AccomplishmentCollection
+    /*
+     * EFFECTS: returns the MoodCollection
      */
     public ArrayList<Mood> getMoodCollection() {
         return moodCollection;
