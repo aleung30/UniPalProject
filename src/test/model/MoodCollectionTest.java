@@ -24,6 +24,7 @@ public class MoodCollectionTest {
     @Test
     void testConstructor() {
         assertEquals(0, testMoodCollection.moodSize());
+        assertEquals(0, testMoodCollection.getMoodCollection().size());
     }
 
     @Test
