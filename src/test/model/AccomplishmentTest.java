@@ -11,7 +11,7 @@ public class AccomplishmentTest {
 
     @BeforeEach
     void runBefore() {
-     testAccomplishment = new Accomplishment("Scored 100 on Math 101 midterm", "Oct 6, 2024");
+        testAccomplishment = new Accomplishment("Scored 100 on Math 101 midterm", "Oct 6, 2024");
     }
 
     @Test
