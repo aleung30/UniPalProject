@@ -1,11 +1,10 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 // Represents a collection of Mood objects
 public class MoodCollection {
-    private List<Mood> moodCollection;
+    private ArrayList<Mood> moodCollection;
 
     /*
      * EFFECTS: constructs an empty list to store Mood objects
@@ -24,7 +23,7 @@ public class MoodCollection {
 
     /*
      * MODIFIES: this
-     * EFFECTS: removes a Mood from the MoodCollection
+     * EFFECTS: removes mood from the MoodCollection
      */
     public void removeMood(Mood mood) {
         this.moodCollection.remove(mood);
@@ -32,7 +31,7 @@ public class MoodCollection {
 
     /*
      * EFFECTS: returns true if name matches the name of a mood in the collection
-     * return false if name does not match any
+     *          return false if name does not match any
      */
     public boolean containsMoodName(String name) {
         for (Mood m : moodCollection) {
@@ -44,9 +43,10 @@ public class MoodCollection {
     }
 
     /*
+     * REQUIRES: Mood oject has a valid type
      * EFFECTS: returns true if type name matches the type name of a mood in the
-     * collection
-     * return false if name does not match any
+     *          collection
+     *          return false if name does not match any
      */
     public boolean containsMoodType(String type) {
         for (Mood m : moodCollection) {
@@ -60,7 +60,7 @@ public class MoodCollection {
     /*
      * REQUIRES: MoodCollection is not an empty list
      * EFFECTS: returns all the moods in the list that match the type name
-     * and creates a new list with them
+     *          and creates a new list with them
      */
 
     public MoodCollection sortMoodsByTypeName(String type) {
@@ -88,14 +88,21 @@ public class MoodCollection {
         } else {
             return "It sounds like you are experiencing some overwhelming emotions!"
                     + " How about some deep breathing exercises or spending time with friends and family?";
-        }
     }
-
+}
+    
     /*
      * REQUIRES: getMoods has at least one item in the list
      * EFFECTS: returns the number of Mood objects in the moods list
      */
     public int moodSize() {
         return moodCollection.size();
+    }
+
+     /*
+     * EFFECTS: returns the AccomplishmentCollection
+     */
+    public ArrayList<Mood> getMoodCollection() {
+        return moodCollection;
     }
 }
