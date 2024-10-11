@@ -7,8 +7,8 @@ public class Mood {
     private String date;
 
     /*
-     * REQUIRES: name has a non-zero length, string has a non-zero length
-     * type is one of "POSITIVE", "NEUTRAL", OR "NEGATIVE"
+     * REQUIRES: name has a non-zero length; date has a non-zero length;
+     *           type is one of "POSITIVE", "NEUTRAL", or "NEGATIVE"
      * EFFECTS: constructs a Mood object with a name, type, and date
      */
     public Mood(String name, String type, String date) {
@@ -27,7 +27,7 @@ public class Mood {
     }
 
     /*
-     * REQUIRES: type is a valid type
+     * REQUIRES: type is a valid type; type has a non-zero length
      * MODIFIES: this
      * EFFECTS: changes type of Mood object
      */
