@@ -13,6 +13,8 @@ As a second-year university student, I have noticed that many of my peers, inclu
 - As a user, I want to receive recommendations for relaxation methods based on my mood
 - As a user, I want to be able to add an accomplishment to the Accomplishment Collection
 - As a user, I want to be able to view all of my accomplishments in the Accomplishment Collection
+- As a user, I want to be given the option to save my UniPalBoard to file
+- As a user, I want to be given the option to load my UniPalBoard from file
 
 
   
