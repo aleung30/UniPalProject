@@ -1,9 +1,16 @@
 package model;
 
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 //Represents a UniPalBoard
-public class UniPalBoard {
+public class UniPalBoard implements Writable {
     private MoodCollection moodCollection;
     private AccomplishmentCollection accomplishmentCollection;
     private String name;
@@ -81,5 +88,36 @@ public class UniPalBoard {
             }
         }
         return false;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("moodCollection", moodCollectionToJson());
+        json.put("accomplishmentCollection", accomplishmentCollectionToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this unipalboard as a JSON array
+    private JSONArray moodCollectionToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Mood mood : moodCollection.getMoodCollection()) {
+            jsonArray.put(mood.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns things in this unipalboard as a JSON array
+    private JSONArray accomplishmentCollectionToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Accomplishment accomplishment : accomplishmentCollection.getAccomplishmentCollection()) {
+            jsonArray.put(accomplishment.toJson());
+        }
+
+        return jsonArray;
     }
 }
