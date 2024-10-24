@@ -1,12 +1,9 @@
 package ui;
 
-import java.util.List;
 import java.util.Scanner;
 
 import model.Accomplishment;
-import model.AccomplishmentCollection;
 import model.Mood;
-import model.MoodCollection;
 
 import model.UniPalBoard;
 import persistence.JsonReader;
@@ -143,7 +140,8 @@ public class UniPalApp {
                 + newMood.getDate());
     }
 
-    // EFFECTS: prints out all accomplishments in the accomplishment collection and prints empty for empty collection
+    // EFFECTS: prints out all accomplishments in the accomplishment collection and
+    // prints empty for empty collection
     private void doViewAccomplishmentCollection() {
         System.out.println("Presenting all of your accomplishments:");
         if (uniPal.getAccomplishmentCollection().isEmpty()) {
@@ -155,7 +153,8 @@ public class UniPalApp {
         }
     }
 
-    // EFFECTS: prints out all moods in the mood collection and prints empty for empty collection
+    // EFFECTS: prints out all moods in the mood collection and prints empty for
+    // empty collection
     private void doViewMoodCollection() {
         System.out.println("Presenting all of your moods:");
         if (uniPal.getMoodCollection().isEmpty()) {
@@ -184,7 +183,7 @@ public class UniPalApp {
         }
     }
 
-    // EFFECTS: conducts suggesting relaxation methods 
+    // EFFECTS: conducts suggesting relaxation methods
     private void doSuggestRelaxationMethods() {
         String moodName;
         String moodType;
@@ -208,7 +207,9 @@ public class UniPalApp {
         System.out.println("Here are your recommended relaxation methods based on your mood type:" + recommendations);
     }
 
-    //EFFECTS: saves the UniPalBoard to file
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: saves the UniPalBoard to file
     public void saveUniPalBoard() {
         try {
             jsonWriter.open();
@@ -219,6 +220,9 @@ public class UniPalApp {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: loads UniPalBoard from file
     private void loadUniPalBoard() {
@@ -229,6 +233,5 @@ public class UniPalApp {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
-
 
 }
