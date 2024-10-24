@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.List;
 import java.util.Scanner;
 
 import model.Accomplishment;
@@ -7,14 +8,27 @@ import model.AccomplishmentCollection;
 import model.Mood;
 import model.MoodCollection;
 
+import model.UniPalBoard;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 // UniPal jounal application
 public class UniPalApp {
-    private MoodCollection myMoodCollection;
-    private AccomplishmentCollection myAccomplishmentCollection;
+    private static final String JSON_STORE = "./data/unipalboard.json";
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private UniPalBoard uniPal;
 
     // EFFECTS: run the UniPal application
-    public UniPalApp() {
+    public UniPalApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        uniPal = new UniPalBoard("Anita's workroom");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runUniPal();
     }
 
@@ -48,6 +62,8 @@ public class UniPalApp {
         System.out.println("\tvm -> view my mood collection");
         System.out.println("\tcm -> check if mood name is in the MoodCollection");
         System.out.println("\trm -> receive relaxation method suggestions");
+        System.out.println("\ts -> save UniPalBoard to file");
+        System.out.println("\tl -> load UniPalBoard from file");
         System.out.println("\tq -> quit");
     }
 
@@ -65,6 +81,10 @@ public class UniPalApp {
             doCheckForMoodName();
         } else if (command.equals("rm")) {
             doSuggestRelaxationMethods();
+        } else if (command.equals("s")) {
+            saveUniPalBoard();
+        } else if (command.equals("l")) {
+            loadUniPalBoard();
         } else {
             System.out.println("Invalid choice, please try again...");
         }
@@ -73,8 +93,6 @@ public class UniPalApp {
     // MODIFIES: this
     // EFFECTS: initializes mood and accomplishment collections
     private void initializeCollections() {
-        myMoodCollection = new MoodCollection();
-        myAccomplishmentCollection = new AccomplishmentCollection();
         input = new Scanner(System.in);
         input.useDelimiter("\r?\n|\r");
     }
@@ -94,7 +112,7 @@ public class UniPalApp {
         accomplishmentDate = input.next();
 
         Accomplishment newAccomplishment = new Accomplishment(accomplishmentName, accomplishmentDate);
-        myAccomplishmentCollection.addAccomplishment(newAccomplishment);
+        uniPal.addAccomplishment(newAccomplishment);
 
         System.out.println(
                 "You have successfully added: " + newAccomplishment.getName() + ", " + newAccomplishment.getDate());
@@ -119,7 +137,7 @@ public class UniPalApp {
         moodDate = input.next();
 
         Mood newMood = new Mood(moodName, moodType, moodDate);
-        myMoodCollection.addMood(newMood);
+        uniPal.addMood(newMood);
 
         System.out.println("You have successfully added: " + newMood.getName() + ", " + newMood.getType() + ", "
                 + newMood.getDate());
@@ -128,10 +146,10 @@ public class UniPalApp {
     // EFFECTS: prints out all accomplishments in the accomplishment collection and prints empty for empty collection
     private void doViewAccomplishmentCollection() {
         System.out.println("Presenting all of your accomplishments:");
-        if (myAccomplishmentCollection.getAccomplishmentCollection().isEmpty()) {
+        if (uniPal.getAccomplishmentCollection().isEmpty()) {
             System.out.println("This list is empty, please add an accomplishment to your collection before checking");
         } else {
-            for (Accomplishment accomplishment : myAccomplishmentCollection.getAccomplishmentCollection()) {
+            for (Accomplishment accomplishment : uniPal.getAccomplishmentCollection()) {
                 System.out.println("\tAccomplishment: " + accomplishment.getName() + ", " + accomplishment.getDate());
             }
         }
@@ -140,10 +158,10 @@ public class UniPalApp {
     // EFFECTS: prints out all moods in the mood collection and prints empty for empty collection
     private void doViewMoodCollection() {
         System.out.println("Presenting all of your moods:");
-        if (myMoodCollection.getMoodCollection().isEmpty()) {
-            System.out.println("This list is empty, please add an accomplishment to your collection before checking");
+        if (uniPal.getMoodCollection().isEmpty()) {
+            System.out.println("This list is empty, please add a mood to your collection before checking");
         } else {
-            for (Mood mood : myMoodCollection.getMoodCollection()) {
+            for (Mood mood : uniPal.getMoodCollection()) {
                 System.out
                         .println("\tMood: " + mood.getName() + " Type: " + mood.getType() + " Date: " + mood.getDate());
             }
@@ -158,7 +176,7 @@ public class UniPalApp {
         System.out.println("Enter mood name: ");
         moodName = input.next();
 
-        boolean moodExists = myMoodCollection.containsMoodName(moodName);
+        boolean moodExists = uniPal.containsMoodName(moodName);
         if (moodExists == true) {
             System.out.println("It is " + moodExists + ", your collection does contain this mood name!");
         } else {
@@ -185,8 +203,32 @@ public class UniPalApp {
 
         Mood newMood = new Mood(moodName, moodType, moodDate);
 
-        String recommendations = myMoodCollection.getRecommendation(newMood);
+        String recommendations = uniPal.getRecommendation(newMood);
 
         System.out.println("Here are your recommended relaxation methods based on your mood type:" + recommendations);
     }
+
+    //EFFECTS: saves the UniPalBoard to file
+    public void saveUniPalBoard() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(uniPal);
+            jsonWriter.close();
+            System.out.println("Saved " + uniPal.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+    // MODIFIES: this
+    // EFFECTS: loads UniPalBoard from file
+    private void loadUniPalBoard() {
+        try {
+            uniPal = jsonReader.read();
+            System.out.println("Loaded " + uniPal.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+
 }
