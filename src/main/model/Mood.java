@@ -1,14 +1,17 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a mood with a name, a type, and date
-public class Mood {
+public class Mood implements Writable {
     private String name;
     private String type;
     private String date;
 
     /*
      * REQUIRES: name has a non-zero length; date has a non-zero length;
-     *           type is one of "POSITIVE", "NEUTRAL", or "NEGATIVE"
+     * type is one of "POSITIVE", "NEUTRAL", or "NEGATIVE"
      * EFFECTS: constructs a Mood object with a name, type, and date
      */
     public Mood(String name, String type, String date) {
@@ -54,5 +57,16 @@ public class Mood {
 
     public String getDate() {
         return date;
+    }
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("type", type);
+        json.put("date", date);
+        return json;
     }
 }
