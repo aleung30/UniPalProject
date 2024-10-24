@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents an accomplishment with a name and date
-public class Accomplishment {
+public class Accomplishment implements Writable {
 
     private String name;
     private String date;
@@ -39,5 +42,15 @@ public class Accomplishment {
 
     public String getDate() {
         return date;
+    }
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("date", date);
+        return json;
     }
 }
