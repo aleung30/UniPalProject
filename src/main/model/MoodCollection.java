@@ -2,8 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
+
 // Represents a collection of Mood objects
-public class MoodCollection {
+public class MoodCollection implements Writable {
     private ArrayList<Mood> moodCollection;
 
     /*
@@ -105,4 +110,23 @@ public class MoodCollection {
     public ArrayList<Mood> getMoodCollection() {
         return moodCollection;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("moodCollection", moodCollectionToJson());
+        return json;
+    }
+
+    // EFFECTS: returns moods in this MoodCollection as a JSON array
+    private JSONArray moodCollectionToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Mood mood : moodCollection) {
+            jsonArray.put(mood.toJson());
+        }
+
+        return jsonArray;
+    }
 }
+
