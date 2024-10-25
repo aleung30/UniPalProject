@@ -1,0 +1,19 @@
+{
+    "moodCollection": [
+        {
+            "date": "Oct 23, 2024",
+            "name": "passed",
+            "type": "POSITIVE"
+        },
+        {
+            "date": "Oct 23, 2024",
+            "name": "failed",
+            "type": "NEGATIVE"
+        }
+    ],
+    "name": "My uni pal",
+    "accomplishmentCollection": [{
+        "date": "Oct 23, 2024",
+        "name": "passed math 100"
+    }]
+}
