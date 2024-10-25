@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents a collection of Accomplishment objects
-public class AccomplishmentCollection implements Writable {
+public class AccomplishmentCollection {
     private ArrayList<Accomplishment> accomplishmentCollection;
 
     /*
@@ -61,27 +61,5 @@ public class AccomplishmentCollection implements Writable {
      */
     public ArrayList<Accomplishment> getAccomplishmentCollection() {
         return accomplishmentCollection;
-    }
-
-    // Referenced from the JsonSerialization Demo
-    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("accomplishmentCollection", accomplishmentCollectionToJson());
-        return json;
-    }
-
-    // Referenced from the JsonSerialization Demo
-    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-    // EFFECTS: returns accomplishments in this AccomplishmentCollection as a JSON array
-    private JSONArray accomplishmentCollectionToJson() {
-        JSONArray jsonArray = new JSONArray();
-
-        for (Accomplishment accomplishment : accomplishmentCollection) {
-            jsonArray.put(accomplishment.toJson());
-        }
-
-        return jsonArray;
     }
 }
