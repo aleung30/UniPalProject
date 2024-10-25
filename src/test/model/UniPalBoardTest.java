@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.json.JSONArray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,14 +14,12 @@ public class UniPalBoardTest {
     private Mood testMood3;
     private Accomplishment testAccomplishment1;
     private Accomplishment testAccomplishment2;
-    private AccomplishmentCollection testAccomplishmentList;
     private UniPalBoard uniPal;
 
     @BeforeEach
     void runBefore() {
         testAccomplishment1 = new Accomplishment("Scored 100 on MATH 101 midterm", "Oct 6, 2024");
         testAccomplishment2 = new Accomplishment("Scored 100 on CPSC 121 midterm", "Oct 6, 2024");
-        testAccomplishmentList = new AccomplishmentCollection();
         testMoodCollection = new MoodCollection();
         testMood1 = new Mood("Happy because I passed math!", "POSITIVE", "Oct 10, 2024");
         testMood2 = new Mood("Bored", "NEUTRAL", "Oct 10, 2024");

@@ -2,10 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import persistence.Writable;
-
 // Represents a collection of Accomplishment objects
 public class AccomplishmentCollection {
     private ArrayList<Accomplishment> accomplishmentCollection;

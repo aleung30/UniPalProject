@@ -2,11 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import persistence.Writable;
-
-
 // Represents a collection of Mood objects
 public class MoodCollection {
     private ArrayList<Mood> moodCollection;

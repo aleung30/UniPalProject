@@ -3,7 +3,6 @@ package persistence;
 import model.UniPalBoard;
 import model.Accomplishment;
 import model.Mood;
-import model.MoodCollection;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
