@@ -63,5 +63,4 @@ public class AccomplishmentCollectionTest {
         assertFalse(testAccomplishmentList.containsAccomplishment("Scored 100 on CPSC 121 midterm", "Oct 6, 2024"));
         assertTrue(testAccomplishmentList.containsAccomplishment("Scored 100 on MATH 101 midterm", "Oct 6, 2024"));
     }
-
 }

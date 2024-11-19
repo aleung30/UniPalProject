@@ -12,38 +12,39 @@ import persistence.Writable;
 //Represents a UniPalBoard
 public class UniPalBoard implements Writable {
     private MoodCollection moodCollection;
-    private AccomplishmentCollection accomplishmentCollection;
-    private String name;
-
-    /*
-     * EFFECTS: constructs an UniPalBoard with a name, MoodCollection, and
-     * AccomplishmentCollection
-     */
-    public UniPalBoard(String name) {
-        this.name = name;
-        this.moodCollection = new MoodCollection();
-        this.accomplishmentCollection = new AccomplishmentCollection();
+    private static AccomplishmentCollection accomplishmentCollection;
+        private String name;
+    
+        /*
+         * EFFECTS: constructs an UniPalBoard with a name, MoodCollection, and
+         * AccomplishmentCollection
+         */
+        public UniPalBoard(String name) {
+            this.name = name;
+            this.moodCollection = new MoodCollection();
+            this.accomplishmentCollection = new AccomplishmentCollection();
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        /*
+         * MODIFIES: this
+         * EFFECTS: adds a Mood to the MoodCollection
+         */
+        public void addMood(Mood mood) {
+            this.moodCollection.addMood(mood);
+        }
+    
+        /*
+         * MODIFIES: this
+         * EFFECTS: adds an accomplishment to the AccomplishmentCollection
+         */
+        public static void addAccomplishment(Accomplishment accomplishment) {
+            accomplishmentCollection.addAccomplishment(accomplishment);
     }
-
-    public String getName() {
-        return name;
-    }
-
-    /*
-     * MODIFIES: this
-     * EFFECTS: adds a Mood to the MoodCollection
-     */
-    public void addMood(Mood mood) {
-        this.moodCollection.addMood(mood);
-    }
-
-    /*
-     * MODIFIES: this
-     * EFFECTS: adds an accomplishment to the AccomplishmentCollection
-     */
-    public void addAccomplishment(Accomplishment accomplishment) {
-        accomplishmentCollection.addAccomplishment(accomplishment);
-    }
+    
 
     /*
      * EFFECTS: returns the MoodCollection
