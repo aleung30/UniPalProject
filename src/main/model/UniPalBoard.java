@@ -12,38 +12,55 @@ import persistence.Writable;
 //Represents a UniPalBoard
 public class UniPalBoard implements Writable {
     private MoodCollection moodCollection;
-    private static AccomplishmentCollection accomplishmentCollection;
-        private String name;
-    
-        /*
-         * EFFECTS: constructs an UniPalBoard with a name, MoodCollection, and
-         * AccomplishmentCollection
-         */
-        public UniPalBoard(String name) {
-            this.name = name;
-            this.moodCollection = new MoodCollection();
-            this.accomplishmentCollection = new AccomplishmentCollection();
-        }
-    
-        public String getName() {
-            return name;
-        }
-    
-        /*
-         * MODIFIES: this
-         * EFFECTS: adds a Mood to the MoodCollection
-         */
-        public void addMood(Mood mood) {
-            this.moodCollection.addMood(mood);
-        }
-    
-        /*
-         * MODIFIES: this
-         * EFFECTS: adds an accomplishment to the AccomplishmentCollection
-         */
-        public static void addAccomplishment(Accomplishment accomplishment) {
-            accomplishmentCollection.addAccomplishment(accomplishment);
+    private AccomplishmentCollection accomplishmentCollection;
+            private String name;
+        
+            /*
+             * EFFECTS: constructs an UniPalBoard with a name, MoodCollection, and
+             * AccomplishmentCollection
+             */
+            public UniPalBoard(String name) {
+                this.name = name;
+                this.moodCollection = new MoodCollection();
+                this.accomplishmentCollection = new AccomplishmentCollection();
+            }
+        
+            public String getName() {
+                return name;
+            }
+        
+            /*
+             * MODIFIES: this
+             * EFFECTS: adds a Mood to the MoodCollection
+             */
+            public void addMood(Mood mood) {
+                this.moodCollection.addMood(mood);
+            }
+        
+            /*
+             * MODIFIES: this
+             * EFFECTS: adds an accomplishment to the AccomplishmentCollection
+             */
+            public void addAccomplishment(Accomplishment accomplishment) {
+                accomplishmentCollection.addAccomplishment(accomplishment);
     }
+
+    /* 
+     * EFFECTS: removes Mood from MoodCollection
+     */
+    public void removeMood(Mood mood) {
+        this.moodCollection.removeMood(mood);
+    }
+
+    /* 
+     * EFFECTS: removes Accomplishment from AccomplishmentCollection
+     */
+    public void removeAccomplishment(Accomplishment accomplishment) {
+        this.accomplishmentCollection.removeAccomplishment(accomplishment);
+    }
+
+
+
     
 
     /*
