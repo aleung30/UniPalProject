@@ -1,122 +1,160 @@
 package ui;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
-import model.Accomplishment;
-import model.Mood;
+import java.awt.*;
+import java.awt.event.ActionListener;
+
 import model.UniPalBoard;
 
-public class MainMenu implements ActionListener {
+// Represents main menu panel
+public class MainMenu {
 
-    protected UniPalBoard uniPal;
-    private JList<Mood> moodJList;
-    private ArrayList<Mood> moods;
+    protected static UniPalBoard uniPal;
+    protected static JFrame mainFrame;
+    private ViewAccomplishmentButtonListener viewAccomplishmentListener = new ViewAccomplishmentButtonListener();
+    private ViewMoodButtonListener viewMoodListener = new ViewMoodButtonListener();
+    private AddMoodButtonListener addMoodListener = new AddMoodButtonListener();
+    private AddAccomplishmentButtonListener addAccomplishmentListener = new AddAccomplishmentButtonListener();
+    private LoadFileButtonListener loadFileListener = new LoadFileButtonListener();
+    private SaveFileButtonListener saveFileListener = new SaveFileButtonListener();
+    private RemoveAccomplishmentButtonListener removeAccomplishmentListener = new RemoveAccomplishmentButtonListener();
+    private RemoveMoodButtonListener removeMoodListener = new RemoveMoodButtonListener();
+    private static JTextField searchField = new JTextField(30);
+    private static JLabel searchLabel = new JLabel("Search");
 
     public MainMenu() {
-        JTable moodTable;
         uniPal = new UniPalBoard("Anita");
-
-        JFrame frame = new JFrame();
-
+        JFrame frame = new JFrame("UniPal");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLayout(new GridLayout(2, 2, 3, 3));
+        frame.setSize(700, 700);
 
-        JButton addAccomplishmentButton = new JButton("Add an Accomplishment!");
-        JButton addMoodButton = new JButton("Add a Mood!");
-        JButton viewMoodButton = new JButton("View your Mood Collection!");
-        JButton viewAccomplishmentButton = new JButton("View your Accomplishment Collection!");
+        JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 5));
+        JPanel containerPanel = new JPanel();
+        containerPanel.setLayout(new BorderLayout());
 
-        frame.add(addAccomplishmentButton);
-        frame.add(addMoodButton);
-        frame.add(viewAccomplishmentButton);
-        frame.add(viewMoodButton);
+        containerPanel.add(createFilePanel(), BorderLayout.SOUTH);
 
-        viewMoodButton.addActionListener(new ActionListener() {
+        JPanel newPanel = new JPanel();
+        newPanel.setPreferredSize(new Dimension(500, 70));
+        newPanel.setBackground(new Color(173, 216, 230));
+        containerPanel.add(createBottomImagePanel(), BorderLayout.NORTH);
 
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame1 = new JFrame();
-                frame1.setTitle("Your Mood Collection");
+        mainPanel.setPreferredSize(new Dimension(400, 100));
+        mainPanel.setBackground(new Color(173, 216, 230));
+        mainPanel.add(createImagePanel(), BorderLayout.WEST);
+        mainPanel.add(createButtonPanel(), BorderLayout.EAST);
+        mainPanel.add(containerPanel, BorderLayout.SOUTH);
 
-    
-                List<Mood> moodList = uniPal.getMoodCollection();
-                moodList = new ArrayList<>();
-                // convert list (1d) to java array (1d) -> 2d array (curly brace)
-                Object[][] data = new Object[moodList.size()][3];
-                for (int i = 0; i < moodList.size(); i++) {
-                    Mood mood = moodList.get(i);
-                    data[i][0] = mood.getName();
-                    data[i][1] = mood.getType();
-                    data[i][2] = mood.getDate();
-
-                }
-
-                String[] columnNames = { "Mood Name", "Mood Type", "Mood Date" };
-                JTable moodTable = new JTable(data, columnNames);
-                frame1.setSize(400, 600);
-
-                JScrollPane scrollPane = new JScrollPane(moodTable);
-                frame1.add(scrollPane);
-                scrollPane.setPreferredSize(new Dimension(250,
-
-                        100));
-
-                frame1.setVisible(true);
-                frame.repaint();
-                frame.revalidate();
-
-            }
-
-        });
-
-        addMoodButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                String name = JOptionPane.showInputDialog("Enter the name of your mood");
-                String type = JOptionPane.showInputDialog("Enter your mood type");
-                String date = JOptionPane.showInputDialog("Enter the date of your mood");
-
-                Mood mood = new Mood(name, type, date);
-                uniPal.addMood(mood);
-                JOptionPane.showMessageDialog(frame, "You have successfully added the mood, "
-                        + mood + " to your collection!");
-            }
-
-        });
-
-        addAccomplishmentButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                String name = JOptionPane.showInputDialog("Enter the name of your accomplishment");
-
-                String date = JOptionPane.showInputDialog("Enter the date of your accomplishment");
-
-                if (name != null && date != null) {
-                    Accomplishment accomplishment = new Accomplishment(name, date);
-                    UniPalBoard.addAccomplishment(accomplishment);
-
-                    JOptionPane.showMessageDialog(null, "You have successfully added the accomplishment, "
-                            + accomplishment + " to your collection!");
-                }
-            }
-        });
-
+        frame.add(mainPanel);
         frame.setVisible(true);
     }
 
+    /*
+     * EFFECTS: constructs a new panel for top image
+     */
+    private JPanel createImagePanel() {
+        JPanel imagePanel = new JPanel();
+        ImageIcon originalIcon = new ImageIcon("./data/IMG_7F906D768CB2-1.jpeg");
+        Image scaledImage = originalIcon.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+        JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
+        imagePanel.add(imageLabel);
+        return imagePanel;
+    }
+
+    /*
+     * EFFECTS: constructs a new panel for bottom image
+     */
+    private JPanel createBottomImagePanel() {
+        JPanel bottomImagePanel = new JPanel();
+        ImageIcon originalIcon = new ImageIcon("./data/IMG_B4E87115093C-1.jpeg");
+        Image scaledImage = originalIcon.getImage().getScaledInstance(400, 200, Image.SCALE_SMOOTH);
+        JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
+        bottomImagePanel.add(imageLabel);
+        return bottomImagePanel;
+    }
+
+    /*
+     * EFFECTS: constructs a new panel for buttoons
+     */
+    private JPanel createButtonPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.setPreferredSize(new Dimension(300, 300));
+
+        JButton addAccomplishmentButton = createButton("Add an Accomplishment!", addAccomplishmentListener,
+                new Dimension(200, 50));
+        JButton addMoodButton = createButton("Add a mood!", addMoodListener, new Dimension(200, 50));
+        JButton viewMoodButton = createButton("View your Mood Collection!", viewMoodListener, new Dimension(300, 40));
+        JButton viewAccomplishmentButton = createButton("View your Accomplishment Collection!",
+                viewAccomplishmentListener, new Dimension(300, 40));
+        JButton removeMoodButton = createButton("Remove a mood!", removeMoodListener, new Dimension(200, 50));
+        JButton removeAccomplishmentButton = createButton("Remove an accomplishment!", removeAccomplishmentListener,
+                new Dimension(200, 50));
+
+        panel.add(addAccomplishmentButton);
+        panel.add(Box.createVerticalStrut(2));
+        panel.add(addMoodButton);
+        panel.add(Box.createVerticalStrut(30));
+        panel.add(viewMoodButton);
+        panel.add(Box.createVerticalStrut(2));
+        panel.add(viewAccomplishmentButton);
+        panel.add(Box.createVerticalStrut(30));
+        panel.add(removeMoodButton);
+        panel.add(Box.createVerticalStrut(2));
+        panel.add(removeAccomplishmentButton);
+
+        return panel;
+    }
+
+    /*
+     * EFFECTS: constructs a new panel for saving and loading file
+     */
+    private JPanel createFilePanel() {
+        JPanel panel = new JPanel(new FlowLayout());
+
+        JButton saveFileButton = createButton("Save your UniPal!", saveFileListener, new Dimension(200, 50));
+        JButton loadFileButton = createButton("Load your UniPal!", loadFileListener, new Dimension(200, 50));
+
+        panel.add(saveFileButton);
+        panel.add(loadFileButton);
+
+        return panel;
+    }
+
+    /*
+     * EFFECTS: constructs a button with given text, listener, and size
+     */
+    private JButton createButton(String text, ActionListener listener, Dimension size) {
+        JButton button = new JButton(text);
+        button.addActionListener(listener);
+        button.setPreferredSize(size);
+        return button;
+    }
+
     public static void main(String[] args) {
+        new SplashScreen();
         new MainMenu();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+    public static JFrame getMainFrame() {
+        return mainFrame;
     }
 
+    public static UniPalBoard getUniPal() {
+        return uniPal;
+    }
+
+    public static JTextField getSearchField() {
+        return searchField;
+    }
+
+    public static JLabel getTextLabel() {
+        return searchLabel;
+    }
+
+    public static void setUniPal(UniPalBoard updatedUniPal) {
+        uniPal = updatedUniPal;
+    }
 }
