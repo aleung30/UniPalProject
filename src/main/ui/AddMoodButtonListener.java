@@ -17,6 +17,7 @@ public class AddMoodButtonListener implements ActionListener {
     /*
      * EFFECTS: adds mood name, type, and date to the Mood Collection
      */
+    @Override
     public void actionPerformed(ActionEvent e) {
         mainFrame = MainMenu.getMainFrame();
         uniPal = MainMenu.getUniPal();
@@ -25,9 +26,12 @@ public class AddMoodButtonListener implements ActionListener {
         String date = JOptionPane.showInputDialog("Enter the date of your mood");
 
         Mood mood = new Mood(name, type, date);
+        if (!name.isEmpty() && !type.isEmpty() && date.isEmpty()) {
         uniPal.addMood(mood);
         JOptionPane.showMessageDialog(mainFrame, "You have successfully added the mood, "
-                + mood.getName() + ", " + mood.getType() + ", " + mood.getDate() + " to your collection!");
+        + mood.getName() + ", " + mood.getType() + ", " + mood.getDate() + " to your collection!");
+        }
+        JOptionPane.showMessageDialog(mainFrame, "That is invalid, please fill in the name, type, and date to add your mood");
 
     }
 

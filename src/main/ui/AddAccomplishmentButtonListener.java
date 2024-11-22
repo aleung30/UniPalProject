@@ -22,7 +22,7 @@ public class AddAccomplishmentButtonListener implements ActionListener {
 
         String date = JOptionPane.showInputDialog("Enter the date of your accomplishment");
 
-        if (name != null && date != null) {
+        if (!name.isEmpty() && !date.isEmpty()) {
             Accomplishment accomplishment = new Accomplishment(name, date);
             uniPal.addAccomplishment(accomplishment);
 
