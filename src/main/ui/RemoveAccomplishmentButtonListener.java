@@ -3,11 +3,9 @@ package ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.Accomplishment;
-import model.Mood;
 import model.UniPalBoard;
 
 // Represents the action taken when Remove Accomplishment Button is clicked

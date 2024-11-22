@@ -12,6 +12,7 @@ public class UniPalBoardTest {
     private Mood testMood1;
     private Mood testMood2;
     private Mood testMood3;
+    private AccomplishmentCollection testAccomplishmentList;
     private Accomplishment testAccomplishment1;
     private Accomplishment testAccomplishment2;
     private UniPalBoard uniPal;
@@ -21,6 +22,7 @@ public class UniPalBoardTest {
         testAccomplishment1 = new Accomplishment("Scored 100 on MATH 101 midterm", "Oct 6, 2024");
         testAccomplishment2 = new Accomplishment("Scored 100 on CPSC 121 midterm", "Oct 6, 2024");
         testMoodCollection = new MoodCollection();
+        testAccomplishmentList = new AccomplishmentCollection();
         testMood1 = new Mood("Happy because I passed math!", "POSITIVE", "Oct 10, 2024");
         testMood2 = new Mood("Bored", "NEUTRAL", "Oct 10, 2024");
         testMood3 = new Mood("Sad because I failed chemistry!", "NEGATIVE", "Oct 10, 2024");
@@ -59,6 +61,33 @@ public class UniPalBoardTest {
         assertEquals(1, uniPal.getMoodCollection().size());
         uniPal.addMood(testMood2);
         assertEquals(2, uniPal.getMoodCollection().size());
+    }
+
+    @Test
+    void testRemoveSingleMood() {
+        uniPal.removeMood(testMood1);
+        assertEquals(0, testMoodCollection.moodSize());
+    }
+
+    @Test
+    void testRemoveMultipleMoods() {
+        uniPal.addMood(testMood1);
+        uniPal.addMood(testMood2);
+        uniPal.removeMood(testMood1);
+        assertEquals(0, testMoodCollection.moodSize());
+        uniPal.removeMood(testMood2);
+        assertEquals(0, testMoodCollection.moodSize());
+    }
+
+
+    @Test
+    void testRemoveMultipleAccomplishments() {
+        uniPal.addAccomplishment(testAccomplishment1);
+        uniPal.addAccomplishment(testAccomplishment2);
+        uniPal.removeAccomplishment(testAccomplishment1);
+        assertEquals(0, testAccomplishmentList.accomplishmentSize());
+        uniPal.removeAccomplishment(testAccomplishment2);
+        assertEquals(0, testAccomplishmentList.accomplishmentSize());
     }
 
     @Test
