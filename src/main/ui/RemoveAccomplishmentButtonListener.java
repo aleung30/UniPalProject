@@ -23,7 +23,6 @@ public class RemoveAccomplishmentButtonListener implements ActionListener {
 
         String date = JOptionPane.showInputDialog("Enter the date of your accomplishment");
 
-       
         Accomplishment removeAccomplishment = null;
         for (Accomplishment accomplishment : uniPal.getAccomplishmentCollection()) {
             if (accomplishment.getName().equals(name) && accomplishment.getDate().equals(date)) {
@@ -34,14 +33,10 @@ public class RemoveAccomplishmentButtonListener implements ActionListener {
 
         if (removeAccomplishment != null) {
             uniPal.removeAccomplishment(removeAccomplishment);
-            JOptionPane.showMessageDialog(null, "You have successfully removed the accomplishment: " + removeAccomplishment.getName());
+            JOptionPane.showMessageDialog(null,
+                    "You have successfully removed the accomplishment: " + removeAccomplishment.getName());
         } else {
             JOptionPane.showMessageDialog(null, "Accomplishment was not found in the collection, please try again.");
         }
     }
 }
-        
-
-    
-
-

@@ -80,9 +80,7 @@ public class MainMenu {
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.setPreferredSize(new Dimension(300, 300));
-
         JButton addAccomplishmentButton = createButton("Add an Accomplishment!", addAccomplishmentListener,
                 new Dimension(200, 50));
         JButton addMoodButton = createButton("Add a mood!", addMoodListener, new Dimension(200, 50));
@@ -92,9 +90,7 @@ public class MainMenu {
         JButton removeMoodButton = createButton("Remove a mood!", removeMoodListener, new Dimension(200, 50));
         JButton removeAccomplishmentButton = createButton("Remove an accomplishment!", removeAccomplishmentListener,
                 new Dimension(200, 50));
-
         panel.add(addAccomplishmentButton);
-        panel.add(Box.createVerticalStrut(2));
         panel.add(addMoodButton);
         panel.add(Box.createVerticalStrut(30));
         panel.add(viewMoodButton);
@@ -104,7 +100,6 @@ public class MainMenu {
         panel.add(removeMoodButton);
         panel.add(Box.createVerticalStrut(2));
         panel.add(removeAccomplishmentButton);
-
         return panel;
     }
 

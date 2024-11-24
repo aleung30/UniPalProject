@@ -28,6 +28,9 @@ public class AddAccomplishmentButtonListener implements ActionListener {
 
             JOptionPane.showMessageDialog(null, "You have successfully added the accomplishment, "
                     + accomplishment.getName() + ", " + accomplishment.getDate() + " to your collection!");
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "That is invalid, please fill in the name, type, and date to add your mood");
         }
 
     }
