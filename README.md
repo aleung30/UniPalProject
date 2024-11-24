@@ -16,5 +16,16 @@ As a second-year university student, I have noticed that many of my peers, inclu
 - As a user, I want to be given the option to save my UniPalBoard to file
 - As a user, I want to be given the option to load my UniPalBoard from file
 
+**Instructions for End User**
+
+- To run the GUI, please run the **MainMenu** class in the ui package
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the "Add an Accomplishment" button
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking the "Remove an accomplishment!" button
+- You can locate my visual component by simply running the **MainMenu** class and viewing the splash screen
+- You can save the state of UniPal by clicking the "Save your UniPal!" button
+- You can reload the state of UniPal by clicking the "Load your UniPal!" button
+
+
+
 
   
