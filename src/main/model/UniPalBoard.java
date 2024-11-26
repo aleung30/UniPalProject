@@ -13,41 +13,41 @@ import persistence.Writable;
 public class UniPalBoard implements Writable {
     private MoodCollection moodCollection;
     private AccomplishmentCollection accomplishmentCollection;
-            private String name;
-        
-            /*
-             * EFFECTS: constructs an UniPalBoard with a name, MoodCollection, and
-             * AccomplishmentCollection
-             */
-            public UniPalBoard(String name) {
-                this.name = name;
-                this.moodCollection = new MoodCollection();
-                this.accomplishmentCollection = new AccomplishmentCollection();
-            }
-        
-            public String getName() {
-                return name;
-            }
-        
-            /*
-             * MODIFIES: this
-             * EFFECTS: adds a Mood to the MoodCollection
-             */
-            public void addMood(Mood mood) {
-                this.moodCollection.addMood(mood);
-                EventLog.getInstance().logEvent(new Event("Added a mood to your collection."));
-            }
-        
-            /*
-             * MODIFIES: this
-             * EFFECTS: adds an accomplishment to the AccomplishmentCollection
-             */
-            public void addAccomplishment(Accomplishment accomplishment) {
-                accomplishmentCollection.addAccomplishment(accomplishment);
-                EventLog.getInstance().logEvent(new Event("Added an accomplishment to your collection."));
+    private String name;
+
+    /*
+     * EFFECTS: constructs an UniPalBoard with a name, MoodCollection, and
+     * AccomplishmentCollection
+     */
+    public UniPalBoard(String name) {
+        this.name = name;
+        this.moodCollection = new MoodCollection();
+        this.accomplishmentCollection = new AccomplishmentCollection();
     }
 
-    /* 
+    public String getName() {
+        return name;
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: adds a Mood to the MoodCollection
+     */
+    public void addMood(Mood mood) {
+        this.moodCollection.addMood(mood);
+        EventLog.getInstance().logEvent(new Event("Added a mood to your collection."));
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: adds an accomplishment to the AccomplishmentCollection
+     */
+    public void addAccomplishment(Accomplishment accomplishment) {
+        accomplishmentCollection.addAccomplishment(accomplishment);
+        EventLog.getInstance().logEvent(new Event("Added an accomplishment to your collection."));
+    }
+
+    /*
      * EFFECTS: removes Mood from MoodCollection
      */
     public void removeMood(Mood mood) {
@@ -55,17 +55,13 @@ public class UniPalBoard implements Writable {
         EventLog.getInstance().logEvent(new Event("Removed a mood from your collection."));
     }
 
-    /* 
+    /*
      * EFFECTS: removes Accomplishment from AccomplishmentCollection
      */
     public void removeAccomplishment(Accomplishment accomplishment) {
         this.accomplishmentCollection.removeAccomplishment(accomplishment);
         EventLog.getInstance().logEvent(new Event("Removed an accomplishment from your collection."));
     }
-
-
-
-    
 
     /*
      * EFFECTS: returns the MoodCollection

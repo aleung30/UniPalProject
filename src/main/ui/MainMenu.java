@@ -5,9 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-import model.EventLog;
 import model.UniPalBoard;
-import model.Event;
 
 // Represents main menu panel
 public class MainMenu {
@@ -157,4 +155,3 @@ public class MainMenu {
         uniPal = updatedUniPal;
     }
 }
-
