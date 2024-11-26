@@ -35,6 +35,7 @@ public class UniPalBoard implements Writable {
              */
             public void addMood(Mood mood) {
                 this.moodCollection.addMood(mood);
+                EventLog.getInstance().logEvent(new Event("Added a mood to your collection."));
             }
         
             /*
@@ -43,6 +44,7 @@ public class UniPalBoard implements Writable {
              */
             public void addAccomplishment(Accomplishment accomplishment) {
                 accomplishmentCollection.addAccomplishment(accomplishment);
+                EventLog.getInstance().logEvent(new Event("Added an accomplishment to your collection."));
     }
 
     /* 
@@ -50,6 +52,7 @@ public class UniPalBoard implements Writable {
      */
     public void removeMood(Mood mood) {
         this.moodCollection.removeMood(mood);
+        EventLog.getInstance().logEvent(new Event("Removed a mood from your collection."));
     }
 
     /* 
@@ -57,6 +60,7 @@ public class UniPalBoard implements Writable {
      */
     public void removeAccomplishment(Accomplishment accomplishment) {
         this.accomplishmentCollection.removeAccomplishment(accomplishment);
+        EventLog.getInstance().logEvent(new Event("Removed an accomplishment from your collection."));
     }
 
 
