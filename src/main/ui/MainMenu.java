@@ -5,7 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+import model.EventLog;
 import model.UniPalBoard;
+import model.Event;
 
 // Represents main menu panel
 public class MainMenu {
@@ -22,10 +24,11 @@ public class MainMenu {
     private RemoveMoodButtonListener removeMoodListener = new RemoveMoodButtonListener();
     private static JTextField searchField = new JTextField(30);
     private static JLabel searchLabel = new JLabel("Search");
+    protected static JFrame frame;
 
     public MainMenu() {
         uniPal = new UniPalBoard("Anita");
-        JFrame frame = new JFrame("UniPal");
+        frame = new JFrame("UniPal");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 700);
 
@@ -131,6 +134,7 @@ public class MainMenu {
     public static void main(String[] args) {
         new SplashScreen();
         new MainMenu();
+        new WindowClosingListener().addWindowListener(frame);
     }
 
     public static JFrame getMainFrame() {
@@ -153,3 +157,4 @@ public class MainMenu {
         uniPal = updatedUniPal;
     }
 }
+
