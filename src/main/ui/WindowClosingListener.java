@@ -19,6 +19,7 @@ public class WindowClosingListener {
                 System.out.println("Logged Events");
                 for (Event event : eventLog) {
                     System.out.println(event.getDescription());
+                    System.out.println(event.getDate());
                 }
                 eventLog.clear(); // Clear the log after printing if desired
             }
