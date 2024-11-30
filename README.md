@@ -25,6 +25,18 @@ As a second-year university student, I have noticed that many of my peers, inclu
 - You can save the state of UniPal by clicking the "Save your UniPal!" button
 - You can reload the state of UniPal by clicking the "Load your UniPal!" button
 
+**Phase 4: Task 2**
+
+- When the user quits the application, all of the add and remove events should be printed to the console with the date and time like the example below: 
+
+Logged Events
+Added an accomplishment to your collection.
+Fri Nov 29 21:16:22 PST 2024
+Removed an accomplishment from your collection.
+Fri Nov 29 21:16:41 PST 2024
+
+
+
 
 
 
