@@ -4,8 +4,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Referenced from https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
- * Represents a UniPal board event.
+ * Referenced from https://github.students.cs.ubc.ca/CPSC210/AlarmSystem 
+ * Represents a UniPal board event
  */
 public class Event {
     private static final int HASH_CONSTANT = 13;

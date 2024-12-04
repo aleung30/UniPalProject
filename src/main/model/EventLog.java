@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Referenced from https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
- * Represents a log of alarm system events.
+ * Referenced from https://github.students.cs.ubc.ca/CPSC210/AlarmSystem 
+ * Represents a log of UniPal events
  * We use the Singleton Design Pattern to ensure that there is only
  * one EventLog in the system and that the system has global access
  * to the single instance of the EventLog.
