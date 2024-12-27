@@ -35,9 +35,7 @@ Fri Nov 29 21:16:22 PST 2024
 Removed an accomplishment from your collection.
 Fri Nov 29 21:16:41 PST 2024
 
-	If I had more time to work on the UniPal application, I would simplify the design by removing the redundant and duplicate code within the AccomplishmentCollection and MoodCollection classes. Within my UniPalBoard class in the model package, I declare a field of type AccomplishmentCollection and MoodCollection, and it holds methods such as adding, returning the collections, and checking if certain mood names are contained inside of a collection. However, all of these methods are also inside of the AccomplishmentCollection and MoodCollection classes as well, which resulted in substantial duplicated code. 
 
-	To improve this code duplication, I would refactor this by removing the AccomplishmentCollection and MoodCollection classes entirely and instantiating lists of type Mood and Accomplishment within the UniPalBoard class directly instead, so there will not be any code duplication. By removing this redundant code, the overall behaviour of the application remains the same while improving the concept of single point of control as any changes made to the AccomplishmentCollection and MoodCollection lists only need to be changed within the UniPalBoard class rather than needing to potentially make changes in 3 different classes.
 
 
 
